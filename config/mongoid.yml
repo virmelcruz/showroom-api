@@ -1,0 +1,24 @@
+development:
+  clients:
+    default:
+      database: showroom
+      hosts:
+        - localhost:27017
+  options:
+    raise_not_found_error: false
+test:
+  clients:
+    default:
+      database: showroom_test
+      hosts:
+        - localhost:27017
+  options:
+    raise_not_found_error: false
+staging:
+  clients:
+    default:
+      database: showroom_staging
+      hosts:
+        - localhost:27017
+    options:
+      raise_not_found_error: false
