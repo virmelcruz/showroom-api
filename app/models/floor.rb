@@ -3,7 +3,7 @@ class Floor
   
   field :name, type: String
   
-  embeds_many :rooms
+  has_many :rooms
 
   validates :name, :presence => true
 end

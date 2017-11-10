@@ -3,7 +3,8 @@ class Room
 
   field :room_no, type: String
   
-  embedded_in :floor
-
+  belongs_to :floor
+  belongs_to :user
+  
   validates :room_no, :presence => true
 end

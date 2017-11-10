@@ -1,7 +1,7 @@
 development:
   clients:
     default:
-      database: showroom
+      database: medifi_development
       hosts:
         - localhost:27017
   options:

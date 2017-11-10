@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post "/graphql", to: "graphql#execute"
   resources :floors, constraints: lambda { |req| req.format == :json } do
     resources :room, constraints: lambda { |req| req.format == :json }, except: [:destroy]
   end
