@@ -10,4 +10,6 @@ Types::MutationType = GraphQL::ObjectType.define do
   end
 
   field :createFloor, function: Resolvers::CreateFloor.new
+  field :updateFloor, function: Resolvers::UpdateFloor.new
+  field :deleteFloor, function: Resolvers::DeleteFloor.new
 end

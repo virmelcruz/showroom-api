@@ -38,7 +38,7 @@ RSpec.describe AuthorizeApiRequest do
 
     context "when it has invalid token" do
       let!(:invalid_request_obj) { described_class.new( "Authorization": token_generator(5, true) ) }
-      it { expect(invalid_request_obj.call[:error]).to be(INVALID_TOKEN) }
+      it { expect(invalid_request_obj.call[:error]).to eq(INVALID_TOKEN) }
     end
 
     context "when it has expired token" do

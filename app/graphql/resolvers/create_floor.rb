@@ -9,6 +9,8 @@ class Resolvers::CreateFloor < GraphQL::Function
     
     if floor.save
       floor
+    else
+      GraphQL::ExecutionError.new("Invalid input for Floor: #{floor.errors.full_messages.join(", ")}")
     end
 
   end
