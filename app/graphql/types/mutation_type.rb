@@ -8,8 +8,15 @@ Types::MutationType = GraphQL::ObjectType.define do
       "Hello World!"
     }
   end
-
-  field :createFloor, function: Resolvers::CreateFloor.new
-  field :updateFloor, function: Resolvers::UpdateFloor.new
-  field :deleteFloor, function: Resolvers::DeleteFloor.new
+  
+  # for floors
+  field :createFloor, function: Resolvers::Floor::CreateFloor.new
+  field :updateFloor, function: Resolvers::Floor::UpdateFloor.new
+  field :deleteFloor, function: Resolvers::Floor::DeleteFloor.new
+  # for rooms
+  field :createRoom, function: Resolvers::Room::CreateRoom.new
+  field :updateRoom, function: Resolvers::Room::UpdateRoom.new
+  field :deleteRoom, function: Resolvers::Room::DeleteRoom.new
+  # for users
+  field :createUser, function: Resolvers::User::CreateUser.new
 end

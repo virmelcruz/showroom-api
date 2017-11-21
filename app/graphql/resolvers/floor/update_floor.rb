@@ -1,4 +1,4 @@
-class Resolvers::UpdateFloor < GraphQL::Function
+class Resolvers::Floor::UpdateFloor < GraphQL::Function
 
   argument :id, !types.String
   argument :name, !types.String

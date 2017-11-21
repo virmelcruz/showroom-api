@@ -18,10 +18,34 @@ Types::QueryType = GraphQL::ObjectType.define do
     }
   end
 
+  field :room, Types::RoomType do
+    description 'Retrieve a floor by id'
+    argument :id, !types.ID
+    resolve -> (obj, args, ctx) {
+      Room.find(args[:id])
+    }
+  end
+
+  field :rooms, types[Types::RoomType] do
+    description 'Retrieves all floors'
+    resolve -> (obj, args, ctx) {
+      Room.all
+    }
+  end
+
   field :users, types[Types::UserType] do
     description 'Retrieves all users'
     resolve -> (obj, args, ctx) {
+      Rails.logger.info("executed meeeee! #{ctx[:current_user][:first_name]}")
       User.all
+    }
+  end
+
+  field :user, Types::UserType do
+    description 'Retrieves specific user by id'
+    argument :id, !types.ID
+    resolve -> (obj, args, ctx) {
+      User.find(args[:id])
     }
   end
 

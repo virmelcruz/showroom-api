@@ -1,4 +1,4 @@
-class Resolvers::CreateFloor < GraphQL::Function
+class Resolvers::Floor::CreateFloor < GraphQL::Function
 
   argument :name, !types.String
 

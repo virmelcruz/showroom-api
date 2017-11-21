@@ -115,21 +115,21 @@ RSpec.describe "Floor API", type: :request do
     end
   end
   
-  describe "DELETE /floors/:id.json deleteFloor(:id) - deletes a floor" do
+  describe "POST /graphql deleteFloor(:id) - deletes a floor" do
     context "when request is valid" do
       let! (:floor) { create :floor }
-      let(:valid_attributes) { { query: "mutation { deleteFloor(id: \"#{floor.id}\") { id } }" } }
+      let(:valid_attributes) { { query: "mutation { deleteFloor(id: \"#{floor.id}\") { } }" } }
       before { post "/graphql", params: valid_attributes }
       
       it { expect(response.content_type).to eq("application/json") }
-      it { expect(json["data"]["deleteFloor"]["id"]).to match(floor.id) }
+      it { expect(json["data"]["deleteFloor"]).to match(floor.id) }
       it { expect(json).not_to have_key("errors") }
       it { expect(response).to have_http_status(:ok) }
       it { expect(Floor.count).to eq(0) }
     end
 
     context "when it has no record found to delete" do
-      let(:valid_attributes) { { query: "mutation { deleteFloor(id: \"0\") { id } }" } }
+      let(:valid_attributes) { { query: "mutation { deleteFloor(id: \"0\") { } }" } }
       
       before { post "/graphql", params: valid_attributes }
 
